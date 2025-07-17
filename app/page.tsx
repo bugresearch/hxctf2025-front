@@ -312,7 +312,7 @@ export default function HacktorxCTF() {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[#33cc00]/30"></div>
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[#33cc00]/30"></div>
 
               {timelineEvents.map((event, index) => (
                 <div
@@ -393,7 +393,7 @@ export default function HacktorxCTF() {
         <div className="container mx-auto px-4">
             <div className="text-center">
             <h3 className="text-5xl font-bold mb-16 text-[#33cc00]">Sponsor ve Organizatörler</h3>
-            <div className="flex justify-center items-center space-x-8 opacity-80">
+            <div className="flex flex-col md:flex-row justify-center items-center md:space-x-8 space-y-4 md:space-y-0 opacity-80">
               <div className="p-5 bg-gray-800 rounded-lg flex items-center justify-center">
                 <span className="text-gray-400"><img src="hxlogo.png" style={{ width: 350, height: 50 }} /></span>
               </div>
