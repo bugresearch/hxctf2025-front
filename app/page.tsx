@@ -221,7 +221,7 @@ export default function HacktorxCTF() {
           </div>
 
           <Button
-            onClick={() => scrollToSection("register")}
+            onClick={() => scrollToSection("hakkında")}
             className="bg-[#33cc00] hover:bg-[#33cc00]/80 text-black font-bold px-8 py-4 text-lg rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#33cc00]/25"
           >
             Bilgi Edinin
