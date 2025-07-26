@@ -42,7 +42,7 @@ export default function HacktorxCTF() {
 
   // Countdown timer
   useEffect(() => {
-    const targetDate = new Date("2025-08-23T13:00:00").getTime()
+    const targetDate = new Date("2025-08-01T10:00:00").getTime()
 
     const timer = setInterval(() => {
       const now = new Date().getTime()
