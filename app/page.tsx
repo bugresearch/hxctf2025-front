@@ -200,7 +200,7 @@ export default function HacktorxCTF() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="mb-8">
             <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-white via-[#33cc00] to-white bg-clip-text text-transparent animate-pulse">
-              Hacktorx CTF 2025
+              HacktorX CTF 2025
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">Dijital savaş alanını keşfetmeye hazır mısnız?</p>
           </div>
