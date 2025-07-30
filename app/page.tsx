@@ -488,19 +488,31 @@ export default function HacktorxCTF() {
                   </div>
                   <div>
                     <Label className="text-gray-300">Tişört Bedeni</Label>
-                    <Select name={`tshirt${memberNum}`}>
-                      <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white">
-                        <SelectValue placeholder="Select size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="xs">XS</SelectItem>
-                        <SelectItem value="s">S</SelectItem>
-                        <SelectItem value="m">M</SelectItem>
-                        <SelectItem value="l">L</SelectItem>
-                        <SelectItem value="xl">XL</SelectItem>
-                        <SelectItem value="xxl">XXL</SelectItem>
-                      </SelectContent>
-                    </Select>
+  <Select
+    value={tshirtSizes[memberNum] || ""}
+    onValueChange={(val) =>
+      setTshirtSizes((prev) => ({ ...prev, [memberNum]: val }))
+    }
+  >
+    <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white">
+      <SelectValue placeholder="Select size" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="xs">XS</SelectItem>
+      <SelectItem value="s">S</SelectItem>
+      <SelectItem value="m">M</SelectItem>
+      <SelectItem value="l">L</SelectItem>
+      <SelectItem value="xl">XL</SelectItem>
+      <SelectItem value="xxl">XXL</SelectItem>
+    </SelectContent>
+  </Select>
+
+  {/* Form submit için hidden input */}
+  <input
+    type="hidden"
+    name={`tshirt${memberNum}`}
+    value={tshirtSizes[memberNum] || ""}
+  />
                   </div>
                 </CardContent>
               </Card>
