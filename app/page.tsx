@@ -448,23 +448,23 @@ export default function HacktorxCTF() {
                       <CardContent className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label className="text-gray-300">İsim Soyisim</Label>
-                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name="nameSurname{memberNum}"/>
+                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name={`nameSurname{memberNum}`}/>
                         </div>
                         <div>
                           <Label className="text-gray-300">E-Posta Adresi</Label>
                           <Input
                             type="email"
-                            className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name="email{memberNum}"
+                            className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name={`email{memberNum}`}
                           />
                         </div>
                         <div>
                           <Label className="text-gray-300">Telefon Numarası</Label>
-                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name="phone{memberNum}"/>
+                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name={`phone{memberNum}`}/>
                         </div>
                         <div>
                           <Label className="text-gray-300">Tişört Bedeni</Label>
                           <Select>
-                            <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white" name="tshirt{memberNum}">
+                            <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white" name={`tshirt{memberNum}`}>
                               <SelectValue placeholder="Select size" />
                             </SelectTrigger>
                             <SelectContent>
