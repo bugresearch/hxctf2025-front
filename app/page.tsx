@@ -513,6 +513,7 @@ export default function HacktorxCTF() {
     name={`tshirt${memberNum}`}
     value={tshirtSizes[memberNum] || ""}
   />
+                    </div>
                   </div>
                 </CardContent>
               </Card>
