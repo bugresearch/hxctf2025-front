@@ -412,106 +412,145 @@ export default function HacktorxCTF() {
       </section>
 
       {/* Registration Section */}
-      {
-      <section id="register" className="py-20 bg-gray-900/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#33cc00]">Takım Kaydı</h2>
-            <p className="text-xl text-gray-300">Yarışmaya katılarak siber güvenlik yetkinliklerinizi ölçün</p>
+<section id="register" className="py-20 bg-gray-900/20">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#33cc00]">Takım Kaydı</h2>
+      <p className="text-xl text-gray-300">
+        Yarışmaya katılarak siber güvenlik yetkinliklerinizi ölçün
+      </p>
+    </div>
+
+    <Card className="max-w-4xl mx-auto bg-gray-900/50 border-[#33cc00]/30">
+      <CardContent className="p-8">
+        <form
+          className="space-y-8"
+          action="https://api.hacktorx.com/api/ctf/register"
+          method="POST"
+        >
+          <div>
+            <Label
+              htmlFor="teamName"
+              className="text-lg font-semibold text-[#33cc00]"
+            >
+              Takım Adı *
+            </Label>
+            <Input
+              id="teamName"
+              name="teamName"
+              className="mt-2 bg-gray-800 border-gray-700 text-white focus:border-[#33cc00]"
+              placeholder="Takım Adınızı Giriniz"
+            />
           </div>
 
-          <Card className="max-w-4xl mx-auto bg-gray-900/50 border-[#33cc00]/30">
-            <CardContent className="p-8">
-              <form className="space-y-8" action="https://api.hacktorx.com/api/ctf/register" method="POST">
-                <div>
-                  <Label htmlFor="teamName" className="text-lg font-semibold text-[#33cc00]">
-                    Takım Adı *
-                  </Label>
-                  <Input
-                    id="teamName"
-                    className="mt-2 bg-gray-800 border-gray-700 text-white focus:border-[#33cc00]"
-                    placeholder="Takım Adınızı Giriniz"
+          <div>
+            <h3 className="text-lg font-semibold text-[#33cc00] mb-4">
+              Team Members (up to 4)
+            </h3>
+
+            {[1, 2, 3, 4].map((memberNum) => (
+              <Card
+                key={memberNum}
+                className="mb-4 bg-gray-800/50 border-gray-700"
+              >
+                <CardHeader>
+                  <CardTitle className="text-white flex items-center justify-between">
+                    Yarışmacı {memberNum}
+                    {memberNum !== 4 && (
+                      <Badge className="bg-[#33cc00]/20 text-[#33cc00]">
+                        Gerekli
+                      </Badge>
+                    )}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label className="text-gray-300">İsim Soyisim</Label>
+                    <Input
+                      className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]"
+                      name={`nameSurname${memberNum}`}
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-gray-300">E-Posta Adresi</Label>
+                    <Input
+                      type="email"
+                      className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]"
+                      name={`email${memberNum}`}
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-gray-300">Telefon Numarası</Label>
+                    <Input
+                      className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]"
+                      name={`phone${memberNum}`}
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-gray-300">Tişört Bedeni</Label>
+                    <Select name={`tshirt${memberNum}`}>
+                      <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white">
+                        <SelectValue placeholder="Select size" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="xs">XS</SelectItem>
+                        <SelectItem value="s">S</SelectItem>
+                        <SelectItem value="m">M</SelectItem>
+                        <SelectItem value="l">L</SelectItem>
+                        <SelectItem value="xl">XL</SelectItem>
+                        <SelectItem value="xxl">XXL</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div>
+            <Label className="text-lg font-semibold text-[#33cc00]">
+              Takım Lideri *
+            </Label>
+            <RadioGroup
+              value={teamLeader}
+              onValueChange={setTeamLeader}
+              className="mt-2"
+              name="leader"
+            >
+              {[1, 2, 3, 4].map((memberNum) => (
+                <div key={memberNum} className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value={`member${memberNum}`}
+                    id={`leader${memberNum}`}
                   />
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-[#33cc00] mb-4">Team Members (up to 4)</h3>
-
-                  {[1, 2, 3, 4].map((memberNum) => (
-                    <Card key={memberNum} className="mb-4 bg-gray-800/50 border-gray-700">
-                      <CardHeader>
-                        <CardTitle className="text-white flex items-center justify-between">
-                          Yarışmacı {memberNum}
-                          {memberNum != 4 && <Badge className="bg-[#33cc00]/20 text-[#33cc00]">Gerekli</Badge>}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="grid md:grid-cols-2 gap-4">
-                        <div>
-                          <Label className="text-gray-300">İsim Soyisim</Label>
-                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name={`nameSurname{memberNum}`}/>
-                        </div>
-                        <div>
-                          <Label className="text-gray-300">E-Posta Adresi</Label>
-                          <Input
-                            type="email"
-                            className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name={`email{memberNum}`}
-                          />
-                        </div>
-                        <div>
-                          <Label className="text-gray-300">Telefon Numarası</Label>
-                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name={`phone{memberNum}`}/>
-                        </div>
-                        <div>
-                          <Label className="text-gray-300">Tişört Bedeni</Label>
-                          <Select>
-                            <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white" name={`tshirt{memberNum}`}>
-                              <SelectValue placeholder="Select size" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="xs">XS</SelectItem>
-                              <SelectItem value="s">S</SelectItem>
-                              <SelectItem value="m">M</SelectItem>
-                              <SelectItem value="l">L</SelectItem>
-                              <SelectItem value="xl">XL</SelectItem>
-                              <SelectItem value="xxl">XXL</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-
-                <div>
-                  <Label className="text-lg font-semibold text-[#33cc00]">Takım Lideri *</Label>
-                  <RadioGroup value={teamLeader} onValueChange={setTeamLeader} className="mt-2" name="leader">
-                    {[1, 2, 3, 4].map((memberNum) => (
-                      <div key={memberNum} className="flex items-center space-x-2">
-                        <RadioGroupItem value={`member${memberNum}`} id={`leader${memberNum}`} />
-                        <Label htmlFor={`leader${memberNum}`} className="text-gray-300">
-                          Yarışmacı {memberNum}
-                        </Label>
-                      </div>
-                    ))}
-                  </RadioGroup>
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="consent" name="kvkk"/>
-                  <Label htmlFor="consent" className="text-gray-300">
-                    Kişisel verilerimin KVKK Aydınlatma Metni kapsamında HacktorX tarafından işlenmesine izin veriyorum. *
+                  <Label
+                    htmlFor={`leader${memberNum}`}
+                    className="text-gray-300"
+                  >
+                    Yarışmacı {memberNum}
                   </Label>
                 </div>
+              ))}
+            </RadioGroup>
+          </div>
 
-                <Button className="w-full bg-[#33cc00] hover:bg-[#33cc00]/80 text-black font-bold py-3 text-lg">
-                  Kayıt Ol
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-      }
+          <div className="flex items-center space-x-2">
+            <Checkbox id="consent" name="kvkk" />
+            <Label htmlFor="consent" className="text-gray-300">
+              Kişisel verilerimin KVKK Aydınlatma Metni kapsamında HacktorX
+              tarafından işlenmesine izin veriyorum. *
+            </Label>
+          </div>
+
+          <Button className="w-full bg-[#33cc00] hover:bg-[#33cc00]/80 text-black font-bold py-3 text-lg">
+            Kayıt Ol
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  </div>
+</section>
+
 
       {/* FAQ Section */}
       <section id="sss" className="py-20">
