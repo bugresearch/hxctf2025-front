@@ -422,7 +422,7 @@ export default function HacktorxCTF() {
 
           <Card className="max-w-4xl mx-auto bg-gray-900/50 border-[#33cc00]/30">
             <CardContent className="p-8">
-              <form className="space-y-8">
+              <form className="space-y-8" action="https://api.hacktorx.com/api/ctf/register" method="POST">
                 <div>
                   <Label htmlFor="teamName" className="text-lg font-semibold text-[#33cc00]">
                     Takım Adı *
@@ -430,7 +430,7 @@ export default function HacktorxCTF() {
                   <Input
                     id="teamName"
                     className="mt-2 bg-gray-800 border-gray-700 text-white focus:border-[#33cc00]"
-                    placeholder="Enter your team name"
+                    placeholder="Takım Adınızı Giriniz"
                   />
                 </div>
 
@@ -442,29 +442,29 @@ export default function HacktorxCTF() {
                       <CardHeader>
                         <CardTitle className="text-white flex items-center justify-between">
                           Yarışmacı {memberNum}
-                          {memberNum === 1 && <Badge className="bg-[#33cc00]/20 text-[#33cc00]">Gerekli</Badge>}
+                          {memberNum != 4 && <Badge className="bg-[#33cc00]/20 text-[#33cc00]">Gerekli</Badge>}
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label className="text-gray-300">İsim Soyisim</Label>
-                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" />
+                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name="nameSurname{memberNum}"/>
                         </div>
                         <div>
                           <Label className="text-gray-300">E-Posta Adresi</Label>
                           <Input
                             type="email"
-                            className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]"
+                            className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name="email{memberNum}"
                           />
                         </div>
                         <div>
                           <Label className="text-gray-300">Telefon Numarası</Label>
-                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" />
+                          <Input className="mt-1 bg-gray-700 border-gray-600 text-white focus:border-[#33cc00]" name="phone{memberNum}"/>
                         </div>
                         <div>
                           <Label className="text-gray-300">Tişört Bedeni</Label>
                           <Select>
-                            <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white">
+                            <SelectTrigger className="mt-1 bg-gray-700 border-gray-600 text-white" name="tshirt{memberNum}">
                               <SelectValue placeholder="Select size" />
                             </SelectTrigger>
                             <SelectContent>
@@ -484,7 +484,7 @@ export default function HacktorxCTF() {
 
                 <div>
                   <Label className="text-lg font-semibold text-[#33cc00]">Takım Lideri *</Label>
-                  <RadioGroup value={teamLeader} onValueChange={setTeamLeader} className="mt-2">
+                  <RadioGroup value={teamLeader} onValueChange={setTeamLeader} className="mt-2" name="leader">
                     {[1, 2, 3, 4].map((memberNum) => (
                       <div key={memberNum} className="flex items-center space-x-2">
                         <RadioGroupItem value={`member${memberNum}`} id={`leader${memberNum}`} />
@@ -497,7 +497,7 @@ export default function HacktorxCTF() {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Checkbox id="consent" />
+                  <Checkbox id="consent" name="kvkk"/>
                   <Label htmlFor="consent" className="text-gray-300">
                     Kişisel verilerimin KVKK Aydınlatma Metni kapsamında HacktorX tarafından işlenmesine izin veriyorum. *
                   </Label>
