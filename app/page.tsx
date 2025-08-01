@@ -86,7 +86,7 @@ export default function HacktorxCTF() {
 
   useEffect(() => {
 
-    const targetDate = new Date("2025-08-01T10:00:00").getTime()
+    const targetDate = new Date("2025-08-07T10:00:00").getTime()
 
 
 
